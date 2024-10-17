@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Puerto Parrilla - Especialistas en Parrilladas y carnes a la brasa">
+    <meta name="keywords" content="puerto, parrilla, parrilladas, carnes, asados, restaurante, ensaladas, comida">
+    <meta name="author" content="Dicao Iveth">
+    <title>Puerto Parrilla</title>
+    <link rel="icon" href="imagenes/ptopa/logo.jpg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <style>
+        body {
+            font-family: 'Noto Serif SC', serif;
+            margin: 0;
+            background-color: #EAF2FA;
+            color: #333;
+        }
+
+        header {
+            background-color: #363636; /* Color */
+            color: #D4AF37;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo {
+            width: 60px;
+            height: auto;
+            vertical-align: middle;
+            margin-right: 15px;
+        }
+
+        header h1 {
+            display: inline;
+            vertical-align: middle;
+            font-size: 2rem;
+        }
+
+        nav {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        nav a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 15px;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
+			border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #ff4500;
+            color: white;
+            border-radius: 5px;
+        }
+		
+		.chifa-button {
+			background-color: #363636;
+			padding: 5px 20px;
+			border-radius: 20px;
+			color: #D4AF37;
+			font-weight: bold;
+			transition: background-color 0.3s ease, transform 0.3s ease;
+			border: none;
+			text-transform: uppercase;
+		}
+
+		.chifa-button:hover {
+			background-color: #FF6347;
+			transform: scale(1.1);
+		}
+		
+		.chifa-container {
+			position: absolute; /* Cambia a absolute para sacarlo del flujo del documento */
+			right: 20px; /* Ajusta este valor para mover el botón a la izquierda o derecha */
+			top: 17px; /* Ajusta este valor según la altura deseada */
+		}
+		
+		/* Estilos para el popup */
+		.popup {
+			display: none; /* Oculto por defecto */
+			position: fixed;
+			z-index: 999; /* Asegurar que esté por encima de otros elementos */
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro */
+			align-items: center; /* Centrando verticalmente */
+			justify-content: center; /* Centrando horizontalmente */
+		}
+
+		/* Contenido del popup */
+		.popup-content {
+			background-color: #fefefe;
+			padding: 20px;
+			border-radius: 10px; /* Bordes redondeados */
+			border: 1px solid #888;
+			width: 80%;
+			max-width: 500px;
+			text-align: center;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+		}
+
+		/* Botón de cerrar */
+		#close-btn {
+			margin-top: 20px;
+			padding: 10px 20px;
+			border-radius: 10px; /* Bordes redondeados */
+			background-color: #f44336;
+			color: white;
+			border: none;
+			cursor: pointer;
+		}
+
+		#close-btn:hover {
+			background-color: #d32f2f;
+		}
+
+        .swiper-container {
+            width: 100%;
+            height: 80vh;
+            margin-top: 120px;
+            position: relative;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        section.about {
+            text-align: center;
+            padding: 40px;
+            background-color: #EAF2FA; /* Color beige suave */
+            margin-top: 20px;
+        }
+
+        section.about h2 {
+            color: #D4AF37;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        section.about p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        section.gallery {
+            text-align: center;
+            padding: 40px;
+            background-color: #ffffff;
+        }
+
+        section.gallery h2 {
+            color: #D4AF37;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        section.gallery p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .gallery-images {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .gallery-item {
+            width: calc(33.33% - 20px);
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .gallery-item p {
+            font-size: 1rem;
+            color: #D4AF37;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #2F2E2E;
+            color: #D4AF37;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .modal img {
+            margin: auto;
+            display: block;
+            width: auto;
+            height: 80%;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            nav a {
+                font-size: 1rem;
+                padding: 8px 10px;
+            }
+
+            section.about h2, section.gallery h2 {
+                font-size: 2rem;
+            }
+
+            section.about p, section.gallery p {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+
+            .gallery-item {
+                width: 90%;
+            }
+
+            .gallery-item img {
+                height: auto;
+            }
+
+            .hero-text h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            section.about h2, section.gallery h2 {
+                font-size: 1.5rem;
+            }
+
+            .gallery-item {
+                width: 100%;
+            }
+
+            .hero-text {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera -->
+    <header>
+        <img src="imagenes/ptopa/logo.jpg" alt="Logo Puerto Parrilla" class="logo">
+        <h1>Puerto Parrilla</h1>
+    </header>
+
+    <!-- Navegación -->
+    <nav>
+        <a href="ptopa.html">Inicio</a>
+        <a href="pmenu.html">Menú</a>
+        <a href="psucursales.html">Sucursales</a>
+		<a href="javascript:void(0);" class="btn-reserva" id="reserva-btn">Reservar</a> <!-- Botón que activa la ventana emergente -->
+		<div class="chifa-container">
+		<a href="index.html" class="chifa-button">Puerto Chifa</a>
+	</div>
+    </nav>
+	<!-- Botón de reservar -->
+	<button id="reserva-btn">Reservar</button>
+
+	<!-- Ventana emergente de reserva -->
+	<div id="popup-reserva" class="popup">
+		<div class="popup-content">
+            <h2>Reserva tu mesa</h2>
+            <p>Para realizar tu reserva, por favor llama al siguiente número:</p>
+            <p><strong>Teléfono:</strong> 099-785-4587</p>
+            <p>O bien, envíanos un correo con los siguientes datos:</p>
+            <ul>
+                <li>Tu nombre</li>
+                <li>Número de teléfono</li>
+                <li>Fecha y hora de la reserva</li>
+                <li>Número de invitados</li>
+            </ul>
+            <p><strong>Correo:</strong> <a href="mailto:Ivethdicao@gmail.com">Ivethdicao@gmail.com</a></p>
+            <button id="close-btn">Cerrar</button>
+		</div>
+	</div>
+    <!-- Carrusel -->
+    <div class="swiper-container" id="inicio">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="imagenes/ptopa/pri/ft1.png" alt="Plato 1">
+            </div>
+            <div class="swiper-slide">
+                <img src="imagenes/ptopa/pri/ft2.jpg" alt="Plato 2">
+            </div>
+            <div class="swiper-slide">
+                <img src="imagenes/ptopa/pri/ft3.png" alt="Plato 3">
+            </div>
+        </div>
+		<div class="hero-text">
+			<h2>Comida a la Parrillla con Sabor Único</h2>
+			<p>Bienvenidos a Puerto Parrilla, donde cada plato es una explosión de sabores auténticos.</p>
+		</div>
+    </div>
+
+    <!-- Sección de presentación -->
+    <section class="about">
+        <h2>Nuestra Especialidad</h2>
+        <p>En Puerto Parrilla, te ofrecemos la mejor experiencia en parrilladas y carnes a la brasa. ¡Ven a disfrutar de nuestros sabores únicos y nuestro ambiente acogedor!</p>
+    </section>
+
+    <!-- Galería -->
+    <section class="gallery">
+        <h2>Galería</h2>
+        <p>Descubre algunos de nuestros platos más populares</p>
+        <div class="gallery-images">
+            <div class="gallery-item">
+                <img src="imagenes/ptopa/pri/f1.jpg" alt="Plato 1">
+                <p>Variedad</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagenes/ptopa/pri/f2.png" alt="Plato 2">
+                <p>Vinos</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagenes/ptopa/pri/f3.webp" alt="Plato 3">
+                <p>Parrilladas</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Puerto Parrilla. Todos los derechos reservados.</p>
+        <div class="social-icons">
+		Síguenos en:
+            <a href="https://www.instagram.com/puertoparrilla.ec?igsh=MXZpOWJmcjZ4bTk2MQ==" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            autoplay: {
+                delay: 5000,
+            },
+            loop: true
+        });
+    </script>
+	<script>
+		// Obtener los elementos del DOM
+		const reservaBtn = document.getElementById('reserva-btn');
+		const popupReserva = document.getElementById('popup-reserva');
+		const closeBtn = document.getElementById('close-btn');
+
+		// Mostrar el popup al hacer clic en el botón de reserva
+		reservaBtn.addEventListener('click', function() {
+		popupReserva.style.display = 'flex'; // Mostrarlo con flex (centra el contenido)
+		});
+
+		// Cerrar el popup al hacer clic en el botón de cerrar
+		closeBtn.addEventListener('click', function() {
+		popupReserva.style.display = 'none'; // Ocultarlo nuevamente
+		});
+	</script>
+
+</body>
+</html>

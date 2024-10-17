@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Arroces - Puerto Chifa">
+    <meta name="keywords" content="arroz, puertochifa, comida china, platos, arroces especiales">
+    <meta name="author" content="Dicao Iveth">
+    <title>Arroces - Puerto Chifa</title>
+    <link rel="icon" href="imagenes/pri/logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Serif SC', serif;
+            margin: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #B22222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            display: inline;
+            vertical-align: middle;
+        }
+
+        nav {
+            background-color: #1E1E1E;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 15px;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
+			border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #B22222;
+            color: white;
+            border-radius: 5px;
+			padding: 5px 15px;
+        }
+
+        section.menu {
+            text-align: center;
+            padding: 130px 20px;
+        }
+
+        section.menu h2 {
+            color: #B22222;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .menu-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-item h3 {
+            margin: 10px 0;
+            color: #B22222;
+        }
+
+        .menu-item p {
+            padding: 0 10px;
+            margin: 0 0 15px;
+            color: #666;
+        }
+
+        footer {
+            background-color: #B22222;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Estilo del botón Volver al Menú Principal */
+        .return-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background-color: #B22222;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 20px; /* Ajustar margen superior para alineación */
+            margin-bottom: 20px; /* Margen inferior */
+        }
+
+        .return-button:hover {
+            background-color: #A02020; /* Color al pasar el mouse */
+            transform: translateY(-3px); /* Efecto de elevación */
+        }
+
+        /* Media queries para mejorar la responsividad */
+        @media (max-width: 600px) {
+            .menu-item {
+                width: 90%; /* Cambiar el ancho para pantallas pequeñas */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera -->
+    <header>
+        <img src="imagenes/pri/logo.png" alt="Logo Puerto Chifa" class="logo">
+        <h1>Puerto Chifa 中港</h1>
+    </header>
+
+    <!-- Navegación -->
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="menu.html">Menú</a>
+        <a href="sucursales.html">Sucursales</a>
+        <a href="empleo.html">Empleo</a>
+    </nav>
+
+    <!-- Sección Arroces -->
+    <section class="menu">
+        <h2>Arroces</h2>
+        <div class="menu-gallery">
+            <div class="menu-item">
+                <img src="imagenes/menu/ar/chae.jpg" alt="Chaulafán especial con ingredientes seleccionados">
+                <h3>Chaulafán especial</h3>
+                <p>Un arroz chaufa con una selección especial de ingredientes.</p>
+            </div>
+            <div class="menu-item">
+                <img src="imagenes/menu/ar/chap.png" alt="Chaulafán de pollo">
+                <h3>Chaulafán de pollo</h3>
+                <p>Arroz chaufa con trozos de pollo a la plancha.</p>
+            </div>
+            <div class="menu-item">
+                <img src="imagenes/menu/ar/chac.jpg" alt="Chaulafán de chancho">
+                <h3>Chaulafán de chancho</h3>
+                <p>Arroz frito combinado con trozos de chancho.</p>
+            </div>
+            <div class="menu-item">
+                <img src="imagenes/menu/ar/chac.png" alt="Chaulafán de camarón">
+                <h3>Chaulafán de camarón</h3>
+                <p>Arroz frito con camarones frescos.</p>
+            </div>
+            <div class="menu-item">
+                <img src="imagenes/menu/ar/chaca.jpg" alt="Chaulafán cantonés con mezcla de carnes">
+                <h3>Chaulafán cantonés</h3>
+                <p>Arroz chaufa estilo cantonés con una mezcla de carnes.</p>
+            </div>
+            <div class="menu-item">
+                <img src="imagenes/menu/ar/chal.png" alt="Chaulafán de lomo">
+                <h3>Chaulafán de lomo</h3>
+                <p>Arroz frito con finos cortes de lomo.</p>
+            </div>
+            <div class="menu-item">
+                <img src="imagenes/menu/ar/ap.jpg" alt="Arroz con pollo">
+                <h3>Arroz con pollo</h3>
+                <p>Clásico arroz frito con jugosos trozos de pollo.</p>
+            </div>
+            <div class="menu-item">
+                <img src="imagenes/menu/ar/chac.png" alt="Arroz con camarón">
+                <h3>Arroz con camarón</h3>
+                <p>Delicioso arroz frito con camarones frescos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón Volver al Menú Principal -->
+    <div style="text-align: center;">
+        <a href="menu.html" class="return-button">Volver al Menú Principal</a>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2024 Puerto Chifa. Todos los derechos reservados.</p>
+        <div class="social-icons">
+            Síguenos en:
+            <a href="https://www.instagram.com/puertochifa.ec?igsh=MTFrNzl2M2N0Mm80aQ==" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/puertochifa/" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Menú de Puerto Parrilla - Parrilladas y carnes a la brasa">
+    <meta name="keywords" content="menú, puertoparrilla, parrilladas, carnes, menú especial">
+    <meta name="author" content="Dicao Iveth">
+    <title>Menú - Puerto Parrilla</title>
+	<link rel="icon" href="imagenes/ptopa/logo.jpg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Serif SC', serif;
+            margin: 0;
+            background-color: #EAF2FA;
+            color: #333;
+        }
+        header {
+            background-color: #363636;
+            color: #D4AF37;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .logo {
+            width: 60px;
+            height: auto;
+            vertical-align: middle;
+            margin-right: 15px;
+        }
+        header h1 {
+            display: inline;
+            vertical-align: middle;
+            font-size: 2rem;
+        }
+        nav {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+        nav a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 15px;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
+			border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: #ff4500;
+            color: white;
+            border-radius: 5px;
+        }
+		/* Estilos para el popup */
+		.popup {
+			display: none; /* Oculto por defecto */
+			position: fixed;
+			z-index: 999; /* Asegurar que esté por encima de otros elementos */
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro */
+			align-items: center; /* Centrando verticalmente */
+			justify-content: center; /* Centrando horizontalmente */
+		}
+
+		/* Contenido del popup */
+		.popup-content {
+			background-color: #fefefe;
+			padding: 20px;
+			border-radius: 10px; /* Bordes redondeados */
+			border: 1px solid #888;
+			width: 80%;
+			max-width: 500px;
+			text-align: center;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+		}
+
+		/* Botón de cerrar */
+		#close-btn {
+			margin-top: 20px;
+			padding: 10px 20px;
+			border-radius: 10px; /* Bordes redondeados */
+			background-color: #f44336;
+			color: white;
+			border: none;
+			cursor: pointer;
+		}
+
+		#close-btn:hover {
+			background-color: #d32f2f;
+		}
+
+		/* Sección Menú */
+		
+		section.menu {
+            text-align: center;
+            padding: 130px 20px;
+        }
+
+        section.menu h2 {
+            color: #D4AF37;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+		
+        .menu-tabs {
+            padding: 130px 20px;
+            text-align: center;
+        }
+
+        /* Estilos para las tarjetas de los platos */
+        .menu-item {
+            display: inline-block;
+            width: 100%;
+			max-width: 300px; /* Ancho máximo para pantallas grandes */
+            margin: 15px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 10px 03px rgba(0, 0, 0, 0.2);
+			overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease;
+			cursor: pointer;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+			border-radius: 10px;
+        }
+
+        .menu-item h3 {
+            color: #D4AF37;
+            font-size: 1.6rem;
+            margin-top: 10px;
+        }
+
+        .menu-item p {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .menu-item select {
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 1rem;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #2F2E2E;
+            color: #D4AF37;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+        }
+		
+        /* Media Queries para mejorar la responsividad */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            nav a {
+                font-size: 1rem;
+                padding: 10px;
+            }
+
+            section.menu-tabs h2 {
+                font-size: 2rem;
+            }
+
+            .menu-item {
+                width: 90%;
+            }
+
+            .menu-item img {
+                max-width: 100%;
+            }
+
+            .tab-link {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+
+            .tab-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .tab-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera -->
+    <header>
+        <img src="imagenes/ptopa/logo.jpg" alt="Logo Puerto Parrilla" class="logo">
+        <h1>Puerto Parrilla</h1>
+    </header>
+
+    <!-- Navegación -->
+    <nav>
+        <a href="ptopa.html">Inicio</a>
+        <a href="pmenu.html">Menú</a>
+        <a href="psucursales.html">Sucursales</a>
+        <a href="javascript:void(0);" class="btn-reserva" id="reserva-btn">Reservar</a> <!-- Botón que activa la ventana emergente -->
+    </nav>
+	<!-- Botón de reservar -->
+	<button id="reserva-btn">Reservar</button>
+
+	<!-- Ventana emergente de reserva -->
+	<div id="popup-reserva" class="popup">
+		<div class="popup-content">
+            <h2>Reserva tu mesa</h2>
+            <p>Para realizar tu reserva, por favor llama al siguiente número:</p>
+            <p><strong>Teléfono:</strong> 099-785-4587</p>
+            <p>O bien, envíanos un correo con los siguientes datos:</p>
+            <ul>
+                <li>Tu nombre</li>
+                <li>Número de teléfono</li>
+                <li>Fecha y hora de la reserva</li>
+                <li>Número de invitados</li>
+            </ul>
+            <p><strong>Correo:</strong> <a href="mailto:Ivethdicao@gmail.com">Ivethdicao@gmail.com</a></p>
+            <button id="close-btn">Cerrar</button>
+		</div>
+	</div>
+
+    <!-- Sección Menú -->
+    <section class="menu">
+        <h2>Nuestro Menú</h2>
+
+        <!-- Tarjetas de los platos -->
+        <div class="menu-item">
+            <img src="imagenes/ptopa/menu/pa.png" alt="Parrilladas">
+            <h3>Parrilladas</h3>
+            <select>
+                <option>Parrillada individual - $29.00</option>
+                <option>Parrillada individual(Lomo Fino) - $32.00</option>
+				<option>Parrillada doble - $46.00</option>
+				<option>Parrillada doble(Lomo Fino) - $53.00</option>
+				<option>Parrillada triple - $66.00</option>
+				<option>Parrillada triple(Lomo Fino) - $69.00</option>
+            </select>
+        </div>
+
+        <div class="menu-item">
+            <img src="imagenes/ptopa/menu/ca.jpg" alt="Carnes">
+            <h3>Carnes</h3>
+            <select>
+                <option>Carne con arroz y menestra - $8.10</option>
+                <option>Carne con ensalada - $7.10</option>
+				<option>Carne con papa frita - $9.50</option>
+				<option>Carne con papa hornada - $9.50</option>
+				<option>Carne con moro - $9.30</option>
+				<option>Carne con atropellado - $9.30</option>
+				<option>Chorizo con arroz y menestra - $8.10</option>
+            </select>
+        </div>
+
+        <div class="menu-item">
+            <img src="imagenes/ptopa/menu/po.jpeg" alt="Pollo">
+            <h3>Pollo</h3>
+            <select>
+                <option>Pollo con arroz y menestra - $7.50</option>
+                <option>Pollo con ensalada - $6.70</option>
+				<option>Pollo con papa frita - $9.00</option>
+				<option>Pollo con papa hornada - $9.50</option>
+				<option>Pollo con moro - $8.90</option>
+				<option>Pollo con Atropellado - $8.90</option>
+            </select>
+        </div>
+
+        <div class="menu-item">
+            <img src="imagenes/ptopa/menu/chu.jpeg" alt="Chuleta">
+            <h3>Chuleta</h3>
+            <select>
+                <option>Chuleta con arroz y menestra - $7.50</option>
+                <option>Chuleta con ensalada - $6.80</option>
+				<option>Chuleta con papa frita - $9.30</option>
+				<option>Chuleta con papa hornada - $9.30</option>
+				<option>Chuleta con moro - $9.00</option>
+				<option>ChuletaChuleta con Atropellado - $9.00</option>
+				<option>Chuleta BBQ con arroz y menestra - $8.50</option>
+				<option>Chuleta BBQ con ensalada - $7.80</option>
+				<option>Chuleta BBQ con moro - $9.50</option>
+				<option>Chuleta BBQ con Atropellado - $9.50</option>
+            </select>
+        </div>
+
+        <div class="menu-item">
+            <img src="imagenes/ptopa/menu/co.jpeg" alt="Costilla">
+            <h3>Costilla</h3>
+            <select>
+                <option>Costillas con arroz y menestra - $13.90</option>
+                <option>Costillas con ensalada - $12.90</option>
+				<option>Costillas con papa frita - $14.90</option>
+				<option>Costillas con papa hornada - $14.90</option>
+				<option>Costillas con moro - $14.90</option>
+				<option>Costillas con Atropellado - $14.90</option>
+				<option>Costillas BBQ con arroz y menestra - $14.90</option>
+				<option>Costillas BBQ con ensalada - $13.90</option>
+				<option>Costillas BBQ con papa frita - $15.90</option>
+				<option>Costillas BBQ con papa hornada - $15.90</option>
+				<option>Costillas BBQ con moro - $16.70</option>
+				<option>Costillas BBQ con Atropellado - $16.70</option>
+            </select>
+        </div>
+		
+		 <div class="menu-item">
+            <img src="imagenes/ptopa/menu/lo.jpeg" alt="Lomo Fino">
+            <h3>Lomo Fino</h3>
+            <select>
+				<option>Lomo fino con arroz y menestra - $14.50</option>
+                <option>Lomo fino con ensalada - $13.50</option>
+				<option>Lomo fino con papa frita - $15.50</option>
+				<option>Lomo fino con papa hornada - $15.50</option>
+				<option>Lomo fino  moro - $16.00</option>
+				<option>Lomo fino  atropellado - $16.00</option>
+				<option>Lomo fino y patacones - $15.50</option>
+				<option>Lomo fino BBQ con moro - $18.30</option>
+				<option>Lomo fino BBQ con Atropellado - $18.30</option>
+				<option>Lomo fino en champiñones y papa hornada/frita - $18.50</option>
+				<option>Steak a la pimienta con papa hornada/frita - $20.50</option>
+				<option>Filet Mignon con papa hornada/frita - $23.50</option>
+            </select>
+        </div>
+		
+		 <div class="menu-item">
+            <img src="imagenes/ptopa/menu/log.jpg" alt="Lomo Gaucho">
+            <h3>Lomo Gaucho</h3>
+            <select>
+                <option>Lomo gaucho con arroz y menestra - $36.00</option>
+                <option>Lomo gaucho con ensalada - $35.00</option>
+				<option>Lomo gaucho con papa frita - $40.00</option>
+				<option>Lomo gaucho con papa hornada - $40.00</option>
+				<option>Lomo gaucho con moro - $38.00</option>
+				<option>Lomo gaucho con atropellado - $38.00</option>
+				<option>1/2 Lomo gaucho y ensalada - $13.90</option>
+				<option>1/2 Lomo gaucho con arroz y menestra - $14.90</option>
+				<option>1/2 Lomo gaucho con papa hornada o frita - $28.00</option>
+				<option>1/2 Lomo gaucho con moro o atropellado - $28.80</option>
+            </select>
+        </div>
+		
+		 <div class="menu-item">
+            <img src="imagenes/ptopa/menu/bich.jpg" alt="Bife de Chorizo">
+            <h3>Bife de Chorizo</h3>
+            <select>
+                <option>Bife de chorizo con arroz y menestra - $27.00</option>
+                <option>Bife de chorizo con ensalada - $26.00</option>
+				<option>Bife de chorizo con papa frita - $29.00</option>
+                <option>Bife de chorizo con papa hornada - $29.00</option>
+				<option>Bife de chorizo con moro - $30.00</option>
+                <option>Bife de chorizo con atropellado - $30.00</option>
+            </select>
+        </div>
+		
+		 <div class="menu-item">
+            <img src="imagenes/ptopa/menu/bic.jpg" alt="Bife de Cuadril">
+            <h3>Bife de Cuadril</h3>
+            <select>
+                <option>Bife de cuadril con arroz y menestra - $36.00</option>
+                <option>Bife de cuadril con ensalada - $35.00</option>
+				<option>Bife de cuadril con papa frita - $38.00</option>
+				<option>Bife de cuadril con papa hornada - $38.00</option>
+				<option>Bife de cuadril con moro - $37.00</option>
+				<option>Bife de cuadril con atropellado - $37.00</option>
+				<option>1/2 Bife de cuadril y ensalada - $13.90</option>
+				<option>1/2 Bife de cuadril con arroz y menestra - $25.00</option>
+				<option>1/2 Bife de cuadril con papa hornada o frita - $28.00</option>
+				<option>1/2 Bife de cuadril con moro o atropellado - $28.80</option>
+				<option>Mixto con papa hornada/frita - $15.00</option>
+            </select>
+        </div>
+		
+		 <div class="menu-item">
+            <img src="imagenes/ptopa/menu/por.jpeg" alt="Porciones">
+            <h3>Porciones</h3>
+            <select>
+                <option>Arroz con menestra - $2.70</option>
+                <option>Atropellado - $3.50</option>
+				<option>Atropellado montado - $4.70</option>
+				<option>Chinchulin - $6.50</option>
+				<option>Chorizo - $4.20</option>
+				<option>Moro - $3.50</option>
+				<option>Morcilla - $4.20</option>
+				<option>Patacones - $2.00</option>
+				<option>Riñón - $6.50</option>
+				<option>Papa hornada - $3.00</option>
+				<option>Papa frita - $3.20</option>
+				<option>Salsa de queso - $2.20</option>
+            </select>
+        </div>
+		
+		 <div class="menu-item">
+            <img src="imagenes/ptopa/menu/be.jpg" alt="Bebidas">
+            <h3>Bebidas</h3>
+            <select>
+                <option>Agua 500 ml - $1.10</option>
+                <option>Agua mineral - $1.50</option>
+				<option>Gaseosas de 300 ml - $1.10</option>
+				<option>Gaseosas de 400 ml - $1.70</option>
+				<option>Gaseosas de 500 ml - $1.70</option>
+				<option>Gaseosas de 2 litros - $3.70</option>
+				<option>FuzeTea 550 ml - $1.60</option>
+				<option>FuzeTea 1.25 litros - $3.30</option>
+				<option>Taza de té - $1.50</option>
+				<option>Jarra de té - $4.00</option>
+				<option>Taza de café - $1.20</option>
+				<option>Vaso de jugo de limón - $1.20</option>
+				<option>1/2 jarra de jugo de limón - $3.50</option>
+				<option>Jarra de jugo de limón - $5.90</option>
+				<option>Vaso de jugo de naranja - $1.80</option>
+				<option>Jarra de Jugo de Naranja - $6.30</option>
+				<option>Cerveza Pilsener Light  - $2.50</option>
+				<option>Cerveza Club Verde - $3.00</option>
+				<option>Cerveza Corona & Stella - $3.50</option>
+            </select>
+        </div>
+    </section>
+	
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2024 Puerto Parrilla. Todos los derechos reservados.</p>
+        <div class="social-icons">
+            Síguenos en:
+			<a href="https://www.instagram.com/puertoparrilla.ec?igsh=MXZpOWJmcjZ4bTk2MQ==" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/puertochifa/" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+            </a>
+        </div>
+    </footer>
+
+    <!-- Script para el popup -->
+    <script>
+		// Obtener los elementos del DOM
+		const reservaBtn = document.getElementById('reserva-btn');
+		const popupReserva = document.getElementById('popup-reserva');
+		const closeBtn = document.getElementById('close-btn');
+
+		// Mostrar el popup al hacer clic en el botón de reserva
+		reservaBtn.addEventListener('click', function() {
+		popupReserva.style.display = 'flex'; // Mostrarlo con flex (centra el contenido)
+		});
+
+		// Cerrar el popup al hacer clic en el botón de cerrar
+		closeBtn.addEventListener('click', function() {
+		popupReserva.style.display = 'none'; // Ocultarlo nuevamente
+		});
+	</script>
+</body>
+</html>

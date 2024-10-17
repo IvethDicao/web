@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Puerto Chifa - Comida China con sabor cantones">
+    <meta name="keywords" content="empleo, aplicación, Puerto Chifa">
+    <meta name="author" content="Dicao Iveth">
+    <title>Empleo - Puerto Chifa</title>
+    <link rel="icon" href="imagenes/pri/logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Serif SC', serif;
+            margin: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #B22222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            display: inline;
+            vertical-align: middle;
+        }
+
+        nav {
+            background-color: #1E1E1E;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 15px;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
+			border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #B22222;
+            color: white;
+            border-radius: 5px;
+			padding: 5px 15px;
+        }
+
+        section.aplicacion {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 120px; /* Espacio para el encabezado y la barra de navegación */
+        }
+
+        section.aplicacion h2 {
+            color: #B22222;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        .form-container input,
+        .form-container textarea {
+            width: calc(100% - 20px); /* Reduce el ancho para hacer espacio */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-container button {
+            background-color: #B22222;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #8B0000;
+        }
+
+        footer {
+            background-color: #B22222;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            resize: none; /* Deshabilita el redimensionamiento */
+        }
+
+        /* Media Queries para Responsividad */
+        @media (max-width: 768px) {
+            section.aplicacion h2 {
+                font-size: 2rem; /* Tamaño de fuente más pequeño en pantallas más pequeñas */
+            }
+
+            .form-container {
+                padding: 15px; /* Menos padding en pantallas más pequeñas */
+            }
+
+            nav a {
+                font-size: 1rem; /* Tamaño de fuente más pequeño para la navegación en móviles */
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                font-size: 0.9rem; /* Tamaño de fuente aún más pequeño para móviles muy estrechos */
+            }
+
+            .form-container button {
+                font-size: 1rem; /* Tamaño de fuente del botón más pequeño en móviles */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera -->
+    <header>
+        <img src="imagenes/pri/logo.png" alt="Logo Puerto Chifa" class="logo">
+        <h1>Puerto Chifa 中港</h1>
+    </header>
+
+    <!-- Navegación -->
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="menu.html">Menú</a>
+        <a href="sucursales.html">Sucursales</a>
+        <a href="empleo.html">Empleo</a>
+    </nav>
+
+    <!-- Sección de Aplicación -->
+    <section class="aplicacion">
+        <h2><font size="6">¡Unete al equipo de Puerto Chifa y Puerto Parrilla!</font></h2>
+        <div class="form-container">
+            <form action="form.php" method="post" enctype="multipart/form-data">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+
+                <label for="puesto">Puesto al que postula:</label>
+                <input type="text" id="puesto" name="puesto" required>
+
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+                <label for="cv">Cargar CV:</label>
+                <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
+
+                <button type="submit">Enviar Solicitud</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2024 Puerto Chifa. Todos los derechos reservados.</p>
+        <div class="social-icons">
+            Síguenos en:
+            <a href="https://www.instagram.com/puertochifa.ec?igsh=MTFrNzl2M2N0Mm80aQ==" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/puertochifa/" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>

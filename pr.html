@@ -1,0 +1,55 @@
+<section class="menu-tabs">
+    <h2>Nuestro Menú</h2>
+    <div class="tabs">
+        <button class="tab-link active" onclick="openTab(event, 'parrilladas')">Parrilladas</button>
+        <button class="tab-link" onclick="openTab(event, 'carnes')">Carnes</button>
+        <button class="tab-link" onclick="openTab(event, 'pollo')">Pollo</button>
+        <!-- Añadir más categorías -->
+    </div>
+
+    <div id="parrilladas" class="tab-content">
+        <div class="menu-item">
+            <img src="imagenes/parrillada-mixta.jpg" alt="Parrillada Mixta">
+            <h3>Parrillada Mixta</h3>
+            <p>Con arroz y menestra - $29.00</p>
+            <p>Con papa frita - $9.50</p>
+        </div>
+        <!-- Añadir más opciones dentro de parrilladas -->
+    </div>
+
+    <div id="carnes" class="tab-content" style="display:none;">
+        <div class="menu-item">
+            <img src="imagenes/carne-parrilla.jpg" alt="Carne a la Parrilla">
+            <h3>Carne a la Parrilla</h3>
+            <p>Con arroz y menestra - $8.10</p>
+            <p>Con papa frita - $9.50</p>
+        </div>
+        <!-- Añadir más opciones dentro de carnes -->
+    </div>
+
+    <div id="pollo" class="tab-content" style="display:none;">
+        <div class="menu-item">
+            <img src="imagenes/pollo-parrilla.jpg" alt="Pollo a la Parrilla">
+            <h3>Pollo a la Parrilla</h3>
+            <p>Con arroz y menestra - $7.50</p>
+            <p>Con papa frita - $9.00</p>
+        </div>
+        <!-- Añadir más opciones dentro de pollo -->
+    </div>
+</section>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tab-link");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>

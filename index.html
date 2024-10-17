@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Puerto Chifa - Comida China con sabor cantones">
+    <meta name="keywords" content="puerto, chifa, parrilla, comida china, cantonesa, arroz, tallarines, sopa, carnes">
+    <meta name="author" content="Dicao Iveth">
+    <title>Puerto Chifa</title>
+    <link rel="icon" href="imagenes/pri/logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    
+    <style>
+        body {
+            font-family: 'Noto Serif SC', serif;
+            margin: 0;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        header {
+            background-color: #B22222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            display: inline;
+            vertical-align: middle;
+        }
+
+        nav {
+            background-color: #1E1E1E;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 15px;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
+			border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #B22222;
+            color: white;
+            border-radius: 5px;
+			padding: 5px 15px;
+        }
+		
+		.parrilla-button {
+			background-color: #B22222;
+			padding: 5px 20px;
+			border-radius: 20px;
+			color: white;
+			font-weight: bold;
+			transition: background-color 0.3s ease, transform 0.3s ease;
+			border: none;
+			text-transform: uppercase;
+		}
+
+		.parrilla-button:hover {
+			background-color: #900000;
+			transform: scale(1.1);
+		}
+		
+		.parrilla-container {
+			position: absolute; /* Cambia a absolute para sacarlo del flujo del documento */
+			right: 20px; /* Ajusta este valor para mover el botón a la izquierda o derecha */
+			top: 20px; /* Ajusta este valor según la altura deseada */
+		}
+
+        .swiper-container {
+            width: 100%;
+            height: 77vh; /* Ajusta la altura del carrusel para que no ocupe todo el espacio */
+            margin-top: 140px;
+            position: relative; /* Para posicionar el texto */
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Mantiene la proporción de la imagen sin distorsionarla */
+        }
+
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            text-align: center;
+            z-index: 10;
+        }
+		
+        section.about {
+            text-align: center;
+            padding: 40px;
+            background-color: #E0E0E0; /* Gris suave */
+            margin-top: 20px;
+        }
+
+        section.about h2 {
+            color: #B22222; /* Rojo fuerte */
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        section.about p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        section.gallery {
+            text-align: center;
+            padding: 40px;
+            background-color: #FFFFFF;
+        }
+
+        section.gallery h2 {
+            color: #B22222;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        section.gallery p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .gallery-images {
+			display: flex;
+			justify-content: space-around;
+			flex-wrap: wrap;
+			gap: 20px;
+		}
+
+		.gallery-item {
+			width: calc(33.33% - 20px); /* El mismo ancho de las imágenes del menú */
+			background-color: #ffffff;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			overflow: hidden;
+			text-align: center;
+			transition: transform 0.3s ease;
+		}
+
+		.gallery-item img {
+			width: 100%;
+			height: 200px; /* Mantiene una altura fija */
+			object-fit: cover;
+		}
+
+		.gallery-item p {
+			font-size: 1rem;
+			color: #B22222;
+			font-weight: bold;
+			margin-top: 10px;
+		}
+
+		.gallery-item:hover {
+			transform: scale(1.05);
+		}
+
+
+        footer {
+            background-color: #B22222;
+            color: white;
+            text-align: center;
+            padding: 05px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Estilo para el modal */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .modal img {
+            margin: auto;
+            display: block;
+            width: auto;
+            height: 80%; /* Ajusta la altura de la imagen */
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            nav a {
+                font-size: 1rem;
+                padding: 8px 10px;
+            }
+
+            section.about h2, section.gallery h2 {
+                font-size: 2rem;
+            }
+
+            section.about p, section.gallery p {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+
+            .gallery-item {
+                width: 90%; /* Más ancho en pantallas pequeñas */
+            }
+
+            .gallery-item img {
+                height: auto; /* Ajustar altura para mantener proporciones */
+            }
+
+            .hero-text h2 {
+                font-size: 1.8rem; /* Tamaño de fuente más pequeño para pantallas pequeñas */
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            section.about h2, section.gallery h2 {
+                font-size: 1.5rem;
+            }
+
+            .gallery-item {
+                width: 100%; /* Ajustar a 100% para pantallas muy pequeñas */
+            }
+
+            .hero-text {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera -->
+    <header>
+        <img src="imagenes/pri/logo.png" alt="Logo Puerto Chifa" class="logo">
+        <h1>Puerto Chifa 中港</h1>
+    </header>
+
+    <!-- Navegación -->
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="menu.html">Menú</a>
+        <a href="sucursales.html">Sucursales</a>
+        <a href="empleo.html">Empleo</a>
+	<div class="parrilla-container">
+		<a href="ptopa.html" class="parrilla-button">Puerto Parrilla</a>
+	</div>
+    </nav>
+
+    <!-- Carrusel en la sección de bienvenida -->
+    <div class="swiper-container" id="inicio">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="imagenes/pri/ft1.jpeg" alt="Plato 1">
+            </div>
+            <div class="swiper-slide">
+                <img src="imagenes/pri/ft2.jpg" alt="Plato 2">
+            </div>
+            <div class="swiper-slide">
+                <img src="imagenes/pri/ft3.jpg" alt="Plato 3">
+            </div>
+        </div>
+        <div class="hero-text">
+			<h2>Comida China con Sabor Cantones</h2>
+			<p>Bienvenidos a Puerto Chifa, donde cada bocado es una experiencia única.</p>
+		</div>
+	</div>
+
+    <!-- Sección de presentación -->
+    <section class="about">
+        <h2>¿Quiénes somos?</h2>
+        <p>En Puerto Chifa, ofrecemos una deliciosa fusión de sabores que combina la riqueza de la cocina china con la tradición culinaria ecuatoriana. Desde nuestros platos de arroz hasta nuestras exquisitas parrilladas, cada bocado está hecho con amor y dedicación.</p>
+    </section>
+
+    <!-- Sección de galería -->
+    <section class="gallery">
+        <h2>Reserva y celebra tus momentos especiales en Puerto Chifa</h2>
+        <p>No importa el tamaño de tu celebración, en Puerto Chifa tenemos la capacidad de atender tanto a pequeños grupos como a grandes reuniones. ¡Te esperamos para compartir juntos momentos inolvidables, con la mejor comida y el ambiente perfecto!</p>
+        <div class="gallery-images">
+            <div class="gallery-item">
+                <img src="imagenes/pri/f1.jpg" alt="Plato 1">
+                <p>Reuniones</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagenes/pri/f2.jpg" alt="Plato 2">
+                <p>Bodas</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagenes/pri/f3.jpg" alt="Plato 3">
+                <p>Cumpleaños</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagenes/pri/f4.jpg" alt="Plato 4">
+                <p>Graduaciones</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagenes/pri/f5.jpg" alt="Plato 5">
+                <p>Aniversarios</p>
+            </div>
+            <div class="gallery-item">
+                <img src="imagenes/pri/pr.jpg" alt="Plato 6">
+                <p>Cocteles</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer style="margin-top: 20px;">
+        <p>© 2024 Puerto Chifa. Todos los derechos reservados.</p>
+        <div class="social-icons">
+             Síguenos en:
+            <a href="https://www.instagram.com/puertochifa.ec?igsh=MTFrNzl2M2N0Mm80aQ==" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/puertochifa/" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+            </a>
+        </div>
+    </footer>
+
+    <!-- Script de Swiper -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            effect: 'fade',
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    </script>
+</body>
+</html>

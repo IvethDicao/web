@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reservas de Puerto Parrilla - Parrilladas y carnes a la brasa">
+    <meta name="keywords" content="reservas, puertoparrilla, parrilladas, carnes">
+    <meta name="author" content="Dicao Iveth">
+    <title>Puerto Parrilla</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+         body {
+            font-family: 'Noto Serif SC', serif;
+            margin: 0;
+            background-color: #EAF2FA;
+            color: #333;
+        }
+
+        header {
+            background-color: #363636;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo {
+            width: 60px;
+            height: auto;
+            vertical-align: middle;
+            margin-right: 15px;
+        }
+
+        header h1 {
+            display: inline;
+            vertical-align: middle;
+            font-size: 2rem;
+        }
+
+        nav {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        nav a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 15px;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #ff4500;
+            color: white;
+            border-radius: 5px;
+        }
+
+        /* Botón de reserva */
+        .btn-reserva {
+            display: inline-block;
+            background-color: #FF4500;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            text-align: center;
+            cursor: pointer;
+            margin: 20px auto;
+        }
+
+        .btn-reserva:hover {
+            background-color: #E03E00;
+        }
+
+        /* Estilos para la ventana modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #2F2E2E;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera -->
+    <header>
+        <img src="imagenes/ptopa/logo.jpg" alt="Logo Puerto Parrilla" class="logo">
+        <h1>Puerto Parrilla</h1>
+    </header>
+
+    <!-- Navegación -->
+    <nav>
+        <a href="ptopa.html">Inicio</a>
+        <a href="pmenu.html">Menú</a>
+        <a href="psucursales.html">Sucursales</a>
+        <a href="javascript:void(0);" class="btn-reserva" id="reservaBtn">Reserva</a>
+    </nav>
+
+    <!-- Ventana Modal -->
+    <div id="reservaModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Reservas en Puerto Parrilla</h2>
+            <p>Para reservar en Puerto Chifa y Puerto Parrilla, llama a los siguientes números:</p>
+            <ul>
+                <li>Puerto Parrilla: <strong>(123) 456-7890</strong></li>
+                <li>Puerto Chifa: <strong>(987) 654-3210</strong></li>
+            </ul>
+            <p>Información requerida para la reserva:</p>
+            <ul>
+                <li>Nombre completo</li>
+                <li>Número de personas</li>
+                <li>Fecha y hora de la reserva</li>
+                <li>Sucursal preferida</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2024 Puerto Parrilla. Todos los derechos reservados.</p>
+        <div class="social-icons">
+            Síguenos en:
+            <a href="https://www.instagram.com/puertoparrilla.ec?igsh=MXZpOWJmcjZ4bTk2MQ==" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/puertochifa/" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // Obtener elementos de la página
+        var modal = document.getElementById("reservaModal");
+        var btn = document.getElementById("reservaBtn");
+        var span = document.getElementsByClassName("close")[0];
+
+        // Mostrar la ventana modal cuando se hace clic en el botón de reserva
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // Cerrar la ventana modal cuando se hace clic en la 'x'
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Cerrar la ventana modal cuando se hace clic fuera de la ventana modal
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
